@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'neontubes';
+    src: url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.eot");
+    src: url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.woff2") format("woff2"),
+        url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.woff") format("woff"),
+        url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: #150e1c;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "neontubes";
+}
+
+h1 {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 30px;
+    color: #d4eaff;
+    text-shadow:
+        0 0 .5em #0000ff4d,
+        0 0 .5em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d;
+}
+
+#gameboard {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* border: solid 1px black; */
+}
+
+.square {
+    width: calc((100% / 3) - 12px);
+    height: calc((100% / 3) - 12px);
+    margin: 2px;
+    background-color: rgba(0, 0, 0, 0.493);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* neon effect */
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    border-radius: 1em;
+    border: .15em solid rgba(255, 255, 255, 1);
+    box-shadow:
+        inset 0 0 0 .2em tomato,
+        inset 0 0 1em .3em tomato,
+        0 0 0 .2em tomato,
+        0 0 1em .3em tomato,
+        1em 1em .4em rgba(0, 0, 0, 0.6);
+
+    /* animation: buzz 0.01s infinite alternate; */
+}
+
+
+#info {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    color: #ffd9e2;
+    font-size: x-large;
+    text-shadow:
+        0 0 .5em tomato,
+        0 0 .5em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        1em 1em .4em rgba(0, 0, 0, 0.6);
+
+    animation: blink 4s infinite alternate;
+}
+
+
+.circle,
+.cross {
+    height: 100%;
+    width: 100%;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    will-change: opacity;
+
+    animation: blink 4s infinite alternate;
+}
+
+.circle::before {
+    content: 'o';
+    position: absolute;
+    box-sizing: border-box;
+
+    color: #ffd9e2;
+    text-shadow:
+        0 0 .5em tomato,
+        0 0 .5em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato,
+        0 0 .2em tomato;
+}
+
+.cross::before {
+    content: 'x';
+    position: absolute;
+    box-sizing: border-box;
+
+    color: #d4eaff;
+    text-shadow:
+        0 0 .5em #0000ff4d,
+        0 0 .5em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d;
+}
+
+.template {
+    justify-content: start;
+    flex-direction: row;
+    width: 350px;
+    z-index: 0;
+}
+
+.refresh-btn {
+    cursor: pointer;
+    border: none;
+    width: 16px;
+    padding: 0;
+    z-index: 1;
+    background-color: transparent;
+    color: #d4eaff;
+    text-shadow:
+        0 0 .5em #0000ff4d,
+        0 0 .5em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d,
+        0 0 .2em #0000ff4d;
+}
+
+@keyframes buzz {
+    70% {
+        opacity: 0.80;
+    }
+}
+
+@keyframes blink {
+
+    40%,
+    43%,
+    46% {
+        opacity: 1;
+    }
+
+    42%,
+    45% {
+        opacity: 0.8;
+    }
+}
