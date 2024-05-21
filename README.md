@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-![Gameplay](gameplay.gif)
+![Gameplay](game-play.gif)
 
 ## Introduction
 
